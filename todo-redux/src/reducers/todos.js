@@ -1,5 +1,4 @@
 
-
 const editLastTodo = (todos,newtext) =>{
  let newTodos = [...todos]
  let ultimo =  newTodos.pop()
@@ -27,12 +26,19 @@ const todos = (state = [], action) => {
     case 'REMOVE_LAST_TODO':
       return state.filter(item => item !== state[state.length - 1])
      
+    case 'REMOVE_A_TODO':
+      return state.filter(item => item.text.startsWith("A")=== false)
+      /* return removeA(state)*/
+
       case 'EDIT_LAST_TODO':
       return editLastTodo(state, action.text)
 
     case 'REMOVE_TODO':
       return state.filter((item) => item.id !== action.todoId)
 
+      case 'SORT_TODO':
+      return [...state.sort((a, b) => a.text > b.text)]
+      
     default:
       return state
   }

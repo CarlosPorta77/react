@@ -19,3 +19,11 @@ export const editLastTodo = text => ({
   type: 'EDIT_LAST_TODO',
   text
 })
+
+export const removeATodo = () => ({
+  type: 'REMOVE_A_TODO'
+})
+
+export const sortTodo = () => ({
+  type: 'SORT_TODO'
+})
