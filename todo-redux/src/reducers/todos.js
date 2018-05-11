@@ -1,3 +1,12 @@
+
+
+const editLastTodo = (todos,newtext) =>{
+ let newTodos = [...todos]
+ let ultimo =  newTodos.pop()
+ ultimo.text = newtext
+ return [...newTodos,ultimo]
+}
+
 const todos = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TODO':
@@ -17,8 +26,13 @@ const todos = (state = [], action) => {
       )
     case 'REMOVE_LAST_TODO':
       return state.filter(item => item !== state[state.length - 1])
+     
+      case 'EDIT_LAST_TODO':
+      return editLastTodo(state, action.text)
+
     case 'REMOVE_TODO':
       return state.filter((item) => item.id !== action.todoId)
+
     default:
       return state
   }
